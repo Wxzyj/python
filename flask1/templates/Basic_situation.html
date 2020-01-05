@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>美国药物中毒的基本情况</title>
+    <link rel="stylesheet" href="static/ys.css" >
+</head>
+<body>
+    <div class="nav" style="width: 100%;">
+        <ul>
+            <li><a href="/">美国药物中毒的基本情况</a></li>
+            <li><a href="/area_situation">美国药物中毒的地区情况</a></li>
+            <li><a href="/trend_situation">美国药物中毒的发展趋势</a></li>
+        </ul>
+    </div>
+    <div class="box" style="height: 100px;">
+    <form class="form" method="POST" action="/Basic_situation_response">
+        <select class="select" name="the_Race_selected">
+            {% for item in the_select_Race %}
+                <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+        </select>
+    <p><input value='选择' type='SUBMIT'></p>
+    </form>
+    </div>
+    <div style="width: 100%;">
+        <div id="timeline"  style="margin:0 auto;width: 50%;" >
+            {{ the_plot_all|safe }}</div>
+    </div>
+
+    <div style="width: 100%;">
+        <div id="pie1" style="float:left;position:relative;width: 50%;">
+        {{ the_plot_all3|safe }}
+        </div>
+        <div id="pie2" style="float:right;position:relative;width: 50%;">
+        {{ the_plot_all2|safe }}
+        </div>
+    </div>
+
+    <div id="text" style="position:relative;padding:20px;">
+        <h3>齿轮图可以直观看出，药物中毒的人种81.64%为白种人，但这并非是白种人的抵抗能力弱或者经常服用药物，而是通过资料调查后得知，美国的人种比例中，白种人占据了接近8成，因此药物中毒的人种比例是与美国的人种比例相联系的。</h3>
+        <h3>通过下拉菜单，可以看出不同人种的不同年龄药物中毒人数分布是相差无几的，因此人种并不是药物中毒人数的关键影响原因。</h3>
+        <h3>同时观察到，男性的死亡人数比女性的多，并且在不同年龄段又有不同，首先根据美国往年统计，男性人口基数比女性人口基数大，因此从比例方面男性会比女性多人，在35-44岁的年龄段，男性药物中毒死亡人数达到顶峰。</h3>
+        <h3>让我们不得不思考很现实的问题，在30-40岁的男性，处于事业的上升期，工作压力也是最大的时候，生活的重担压在男性的身上，以致于这个年龄段的男性，都带着部分疾病，又或是小毛病，而美国又是快节奏的国家，多数人喜欢通过服用药物或药用保健品来维持身体健康，导致身体被药物侵蚀过于严重，成为了药物中毒死亡的一份子。</h3>
+    </div>
+
+    <div style="width: 100%;">
+        <div id="table" style="margin:0 auto;width: 50%;">
+        {{ the_res|safe }}
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>美国药物中毒的地区情况</title>
+    <link rel="stylesheet" href="static/ys.css" >
+</head>
+<body>
+    <div class="nav" style="width: 100%;">
+        <ul>
+            <li><a href="/">美国药物中毒的基本情况</a></li>
+            <li><a href="/area_situation">美国药物中毒的地区情况</a></li>
+            <li><a href="/trend_situation">美国药物中毒的发展趋势</a></li>
+        </ul>
+    </div>
+    <div class="box" style="height: 100px;">
+    <form class="form" style="margin:0 auto;width: 3%;"method="POST" action="/area_situation_response">
+        <select class="select" name="the_Year_selected">
+            {% for item in the_select_Year %}
+                <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+        </select>
+    <p><input  value='选择' type='SUBMIT'></p>
+    </form>
+    </div>
+
+    <div style="width: 100%;">
+        <div id="map1" style="float:left;position:relative;width: 50%;">
+        {{ the_plot_all2|safe }}
+        </div>
+        <div id="map2" style="float:right;position:relative;width: 50%;">
+        {{ the_plot_all3|safe }}
+        </div>
+    </div>
+    <div id="text" style="position:relative;padding:20px;">
+        <h3>此图一为近18年来美国各州的药物中毒人数在美国内各区域分布情况，由1999年的药物中毒人数分布图可以直观看出，大部分药物中毒的人都集中在美国西部，而中部几乎为0，因为那是一个山脉，人数分布较少，东部的药物中毒人数则集中于纽约、华盛顿等发达城市,因此发出猜想，药物中毒人数的高低是受地区人数影响。</h3>
+        <h3>从图二1999-2017美国区域人口分布图可以发现，在药物中毒人数最集中的区域都是人口密集的地方，而观察两图又发现在美国西部内陆人口不密集的区域也同样有着很多因药物中毒的人。</h3>
+        <h3>从此又引发猜想，当地经济及技术的水平同样影响着药物中毒的分布，因为在西部的洛杉矶，东部的纽约和华盛顿是美国的前几名的大城市，也都是美国经济发展最为快速的城市，在这些地方，工作劳累导致药物使用较频繁，人口基数又大，才使药物中毒人数这么多。</h3>
+        <h3>下拉观察1999-2017年的药物中毒人数分布变化，发现药物中毒的人数分布，逐渐从西部转移到东部，在这期间，美国的技术水平也在快速增长，西部主要发展在高新技术，医疗技术的水平也水涨船高，虽然人数还是逐年递增，但西部在整个美国中，已经属于药物中毒人数较少的区域了，同时人口分布图，得知在这段时间内，人口往东部迁移，人口越往东部越密集，受人口和技术的影响，在2017年时，东部的药物中毒人数都处于较高水平。</h3>
+        <h3>总结：在美国这种外来人口迁移多、生活节奏快速的国家，人们的压力和疾病也会随之增多，人们对于药物的依赖也会变大，是药三分毒，调理好自身的身子才是关键，不应该在身体出现问题时，总是依赖药物。</h3>
+    </div>
+    <div id="map" style="margin:0 auto;width: 50%;">
+    {{ the_res|safe }}
+    </div>
+
+
+</body>
+</html>

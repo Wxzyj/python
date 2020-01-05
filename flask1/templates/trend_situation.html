@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>美国药物中毒的发展趋势</title>
+    <link rel="stylesheet" href="static/ys.css" >
+</head>
+<body>
+    <div class="nav" style="width: 100%;">
+        <ul>
+            <li><a href="/">美国药物中毒的基本情况</a></li>
+            <li><a href="/area_situation">美国药物中毒的地区情况</a></li>
+            <li><a href="/trend_situation">美国药物中毒的发展趋势</a></li>
+        </ul>
+    </div>
+    <div class="box" style="height: 100px;">
+    <form class="form" method="POST" action="/trend_situation_response">
+        <select class="select" name="the_Race_selected">
+            {% for item in the_select_Race %}
+                <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+        </select>
+    <p><input value='选择' type='SUBMIT'></p>
+    </form>
+    </div>
+
+
+    <div style="width: 100%;">
+        <div id="map1" style="float:left;position:relative;width: 50%;">
+        {{ the_plot_all2|safe }}
+        </div>
+        <div id="map2" style="float:right;position:relative;width: 50%;">
+        {{ the_plot_all3|safe }}
+        </div>
+    </div>
+    <div id="text" style="position:relative;padding:20px;float:left;">
+        <h3>左图数值表示每1000000人中药物中毒死亡的人数，由图可看出，随着时间的推移，美国总体药物中毒死亡率上升，其中黑人的中毒死亡率增长最快，其他种族有降低的趋势。</h3>
+        <h3>纵观1999-2017年美国中毒男女人数趋势图，可以发现，在2007年间，药物中毒死亡人数的增加趋向平缓，但这并不是因为这方面的药物得到规范和控制，而是在2007年间，美国爆发了金融危机，人们不再是个个可以吃得起药，死亡的原因也多了其他种类，所以才导致药物中毒死亡人数趋向平缓，而当美国度过金融危机，开始快速发展时，药物中毒死亡人数又开始直线飙升了。（具体看2014-2017年）因此，社会中的各种社会现象，也影响着人们本身。</h3>
+    </div>
+    <div id="table" style="margin:0 auto;width: 50%;">
+    {{ the_res|safe }}
+    </div>
+
+
+</body>
+</html>
